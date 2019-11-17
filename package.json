@@ -1,14 +1,14 @@
 {
-    "name": "hanul-imagemagick",
-    "description": "A wrapper around the imagemagick cli",
-    "version": "0.1.5",
+    "name": "hanul-graphicsmagick",
+    "description": "A wrapper around the GraphicsMagick cli",
+    "version": "1.0.0",
     "author": "Hanul <http://hanul.me>",
     "licenses": [
         "MIT"
     ],
     "repository": {
         "type": "git",
-        "url": "http://github.com/Hanul/node-imagemagick.git"
+        "url": "http://github.com/Hanul/hanul-graphicsmagick.git"
     },
     "dependencies": {
         "command-exists": "latest"
@@ -16,5 +16,5 @@
     "engine": [
         "node >=0.6"
     ],
-    "main": "imagemagick"
+    "main": "graphicsmagick"
 }

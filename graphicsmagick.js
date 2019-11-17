@@ -1,8 +1,5 @@
 var childproc = require('child_process'),
-	EventEmitter = require('events').EventEmitter,
-	commandExists = require('command-exists');
-
-let isNewVersion = false;
+	EventEmitter = require('events').EventEmitter;
 
 function exec2(file, args /*, options, callback */ ) {
 	var options = {
@@ -168,11 +165,9 @@ exports.identify = function(pathOrArgs, callback) {
 		callback = pathOrArgs;
 	}
 	
-	if (isNewVersion == true) {
-		args.unshift('identify');
-	}
+	args.unshift('identify');
 	
-	var proc = exec2(exports.identify.path, args, {
+	var proc = exec2('gm', args, {
 		timeout: 120000
 	}, function(err, stdout, stderr) {
 		var result, geometry;
@@ -203,7 +198,6 @@ exports.identify = function(pathOrArgs, callback) {
 	}
 	return proc;
 }
-exports.identify.path = 'identify';
 
 function ExifDate(value) {
 	// YYYY:MM:DD HH:MM:SS -> Date(YYYY-MM-DD HH:MM:SS +0000)
@@ -309,13 +303,10 @@ exports.convert = function(args, timeout, callback) {
 	if (timeout && (timeout = parseInt(timeout)) > 0 && !isNaN(timeout))
 		procopt.timeout = timeout;
 	
-	if (isNewVersion == true) {
-		args.unshift('convert');
-	}
+	args.unshift('convert');
 	
-	return exec2(exports.convert.path, args, procopt, callback);
+	return exec2('gm', args, procopt, callback);
 }
-exports.convert.path = 'convert';
 
 var resizeCall = function(t, callback) {
 	var proc = exports.convert(t.args, t.opt.timeout, callback);
@@ -480,11 +471,3 @@ exports.resizeArgs = function(options) {
 		args: args
 	};
 }
-
-commandExists('magick', (err, commandExists) => {
-	if (commandExists === true) {
-		exports.identify.path = 'magick';
-		exports.convert.path = 'magick';
-		isNewVersion = true;
-	}
-});

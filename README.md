@@ -1,20 +1,18 @@
-# node-imagemagick
+# hanul-graphicsmagick
 
-[Imagemagick](http://www.imagemagick.org/) module for [Node](http://nodejs.org/).
-
-> Note: This code has been unmaintained for a long time. Please consider using the [gm module](https://github.com/aheckmann/gm) instead.
+[GraphicsMagick](http://www.graphicsmagick.org/) module for [Node](http://nodejs.org/).
 
 You can install this module using [npm](http://github.com/isaacs/npm):
 
-    npm install hanul-imagemagick
+    npm install hanul-graphicsmagick
 
-Requires imagemagick CLI tools to be installed. There are numerous ways to install them. For instance, if you're on OS X you can use [Homebrew](http://mxcl.github.com/homebrew/): `brew install imagemagick`.
+Requires GraphicsMagick CLI tools to be installed. There are numerous ways to install them. For instance, if you're on OS X you can use [Homebrew](http://mxcl.github.com/homebrew/): `brew install graphicsmagick`.
 
 ## Example
 
 ```javascript
-var im = require('imagemagick');
-im.readMetadata('kittens.jpg', function(err, metadata){
+var GraphicsMagick = require('hanul-graphicsmagick');
+GraphicsMagick.readMetadata('kittens.jpg', function(err, metadata){
   if (err) throw err;
   console.log('Shot at '+metadata.exif.dateTimeOriginal);
 })
@@ -116,7 +114,7 @@ srcPath, dstPath and (at least one of) width and height are required. The rest i
 Example:
 
 ```javascript
-im.resize({
+GraphicsMagick.resize({
   srcPath: 'kittens.jpg',
   dstPath: 'kittens-small.jpg',
   width:   256
@@ -130,7 +128,7 @@ Example with stdin/stdout:
 
 ```javascript
 var fs = require('fs');
-im.resize({
+GraphicsMagick.resize({
   srcData: fs.readFileSync('kittens.jpg', 'binary'),
   width:   256
 }, function(err, stdout, stderr){
@@ -146,7 +144,7 @@ Convenience function for resizing and cropping an image. _crop_ uses the resize 
 Example:
 
 ```javascript
-im.crop({
+GraphicsMagick.crop({
   srcPath: path,
   dstPath: 'cropped.jpg',
   width: 800,
@@ -160,7 +158,7 @@ im.crop({
 
 ## License (MIT)
 
-Copyright (c) 2010-2012 Hanul <http://hanul.me>
+Copyright (c) 2019 Hanul <http://hanul.me>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

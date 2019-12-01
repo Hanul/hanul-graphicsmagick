@@ -1,7 +1,7 @@
 {
     "name": "hanul-graphicsmagick",
     "description": "A wrapper around the GraphicsMagick cli",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "author": "Hanul <http://hanul.me>",
     "licenses": [
         "MIT"
